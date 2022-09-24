@@ -5,15 +5,16 @@ import os
 
 
 def main():
+    lossless_extensions = (".flac", ".wav")
     args = term_args()
+    
     if args.path is None:
-        print("Bad!")
+        print("Please provide directory!")
         exit(1)
+    
     directory = args.path
     output_dir = directory + "/transcode"
     Path(output_dir).mkdir(exist_ok=True)
-
-    lossless_extensions = (".flac", ".wav")
 
     for file in os.listdir(directory):
         if file.endswith(lossless_extensions):
