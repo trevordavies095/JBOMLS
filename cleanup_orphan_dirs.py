@@ -35,7 +35,7 @@ def main():
 
 def term_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument("-p", "--path", type=str, help="Path to be transcoded.")
+    parser.add_argument("-p", "--path", type=str, help="Path to be searched.")
     return parser.parse_args()
 
 
