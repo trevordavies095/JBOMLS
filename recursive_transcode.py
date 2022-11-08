@@ -8,25 +8,28 @@ lossless_extensions = (".flac", ".wav")
 def main():
 	args = term_args()
 	
-	if args.path or args.output_path is None:
-		print('no path')
+	if args.path is None or args.output_path is None:
+		print('input path or output path not specified')
 		exit(1)
 
 	print(f'Processing {args.path} ')
 	
 	base_dir = args.path
-	print('Base Directory  = ' + base_dir)
+	output_dir =  args.output_path
+	print(f'Base Directory  = { base_dir}')
+	print(f'Output Directory = {output_dir}')
 	
 	for root, subs, files in os.walk(base_dir):
 		for file in files:
 			if file.endswith(lossless_extensions):	
-				convert(file, root)
+				convert(file, root, output_dir)
 
-def convert(file, path):
+def convert(file, path, output_dir):
 	print(file)
 	for file_extension in lossless_extensions:
-		out_file = file.split(file_extension)[0] 
-	cmd = f'ffmpeg -i "{os.path.join(path , file)}" -y -v 0 -vcodec copy -acodec alac "/tmp/{out_file}.m4a"'
+		if (file.endswith(file_extension)):
+			out_file = file.split(file_extension)[0] 
+	cmd = f'ffmpeg -i "{os.path.join(path , file)}" -y -v 0 -vcodec copy -acodec alac "{output_dir}/{out_file}.m4a"'
 	os.system(cmd)
 	
 def term_args():
