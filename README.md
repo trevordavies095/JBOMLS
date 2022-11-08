@@ -55,3 +55,6 @@ This script will change the release type from Live to album;live. The file will 
 | remix        | album;remix       |
 | mixtape      | album;mixtape     |
 | soundtrack   | album;soundtrack  |
+
+## recursive_transcode.py
+Will recursively transcode a folder and all of it's subfolders to the destination file type.  Rebuilds the original folder structure while copying the transcoded files to the destination. 
