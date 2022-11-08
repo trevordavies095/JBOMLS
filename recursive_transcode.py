@@ -8,7 +8,7 @@ lossless_extensions = (".flac", ".wav")
 def main():
 	args = term_args()
 	
-	if args.path is None:
+	if args.path or args.output_path is None:
 		print('no path')
 		exit(1)
 
@@ -32,6 +32,7 @@ def convert(file, path):
 def term_args():
     parser = argparse.ArgumentParser()
     parser.add_argument("-p", "--path", type=str, help="Path to be transcoded.")
+    parser.add_argument("-o", "--output_path", type=str, help="Output path")
     return parser.parse_args()
 
 if __name__ == '__main__': 
