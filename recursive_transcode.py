@@ -36,6 +36,7 @@ def term_args():
     parser = argparse.ArgumentParser()
     parser.add_argument("-p", "--path", type=str, help="Path to be transcoded.")
     parser.add_argument("-o", "--output_path", type=str, help="Output path")
+    parser.add_argument("-c", "--output_codec", type=str, help="Output codec")
     return parser.parse_args()
 
 if __name__ == '__main__': 
