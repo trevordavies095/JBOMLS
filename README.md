@@ -1,6 +1,8 @@
 # JBOMLS
 Just a Bunch Of Music Library Scripts
 
+I have plans to make this a more configurable package in the future but for now..
+
 This is a handful of scripts that I use to maintain my music library.
 The code is subpar. Contribute if you'd like!
 
