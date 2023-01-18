@@ -58,3 +58,32 @@ This script will change the release type from Live to album;live. The file will 
 
 ## recursive_transcode.py
 Will recursively transcode a folder and all of it's subfolders to the destination file type.  Rebuilds the original folder structure while copying the transcoded files to the destination. 
+
+## non_log_flacs.py
+This script will look through the provided path and go 2 folders deep (depth=1) and report on any lossless album that does not have a log file in that directory.
+
+### Example:
+Below would show up on the report since there is no log file in the album directory.
+
+```
+/Music/Talk Talk/[1991] Laughing Stock
+
+Music
++-- Radiohead
+    +-- [1997] Karma Police (Single)
+        +-- cover.jpg
+        +-- 01 Karma Police
+```
+
+However the below directory would not show up on the report
+
+```
+/Music/Radiohead/[1997] Karma Police (Single)
+
+Music
++-- Radiohead
+    +-- [1997] Karma Police (Single)
+        +-- cover.jpg
+        +-- 01 Karma Police
+        +-- Karma Police.log
+```
