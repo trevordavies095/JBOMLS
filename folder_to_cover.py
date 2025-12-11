@@ -16,19 +16,9 @@ def main():
 
     # Only looking leaf directorys containing one image file
     for root, dirs, files in os.walk(directory):
-        if len(files) == 1 and filetype.is_image(os.path.join(root,files[0])) and not dirs:
-            paths.append(root)
-            print(root)
-
-    if paths:
-        print()
-        print("Delete the following directories?")
-        print("[Y]es, [N]o")
-        choice = input("> ").lower().strip()
-
-        if choice == "y":
-            for path in paths:
-                shutil.rmtree(path)
+        for file in files:
+            if file.lower() == "folder.jpg":
+                os.rename((root + "/" + file), (root + "/" + "cover.jpg"))
     else:
         print("No directories found!")
 

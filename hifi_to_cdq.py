@@ -5,7 +5,7 @@ import os
 
 
 def main():
-    lossless_extensions = (".flac", ".wav")
+    lossless_extensions = (".mka", ".flac", ".wav")
     args = term_args()
     
     if args.path is None:

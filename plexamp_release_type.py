@@ -13,7 +13,6 @@ plex_release_types = {
 
 def main():
     args = term_args()
-        
     if args.path is None:
         print("Please provide directory!")
         exit(1)
@@ -21,17 +20,19 @@ def main():
     directory = args.path
     filetypes = (".flac")
 
-    for root, dirs, files in os.walk(directory):
-        for file in files:
-            if file.endswith(filetypes):
-                if file.endswith(".flac"):
-                    try:
-                        audio = FLAC(root + "/" + file)
-                        rt = audio["releasetype"][0].lower().strip()
-                        p = root + "/" + file
-                        update_release_type(audio, rt, p)
-                    except:
-                        continue
+    for root, dirs, files in os.walk(directory, topdown=True):
+        depth = root[len(directory) + len(os.path.sep):].count(os.path.sep)
+        if depth == 1:
+            for file in files:
+                if file.endswith(filetypes):
+                    if file.endswith(".flac"):
+                        try:
+                            audio = FLAC(root + "/" + file)
+                            rt = audio["releasetype"][0].lower().strip()
+                            p = root + "/" + file
+                            update_release_type(audio, rt, p)
+                        except:
+                            continue
 
 def update_release_type(track, rt, p):
     track["releasetype"] = plex_release_types[rt]
