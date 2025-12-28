@@ -79,6 +79,27 @@ An improved version of the orphan directory cleanup script. Uses the `filetype` 
 python cleanup_orphan_dirs_v3.py -p /path/to/music/library
 ```
 
+#### delete_numbered_covers.py
+
+Finds and deletes numbered cover art files (e.g., `cover.1.jpg`, `cover.2.png`) from a directory structure. Recursively searches through all subdirectories and matches files with the pattern `cover.N.jpg` or `cover.N.png` where N is any integer >= 1. The script will display all matching files and prompt for user confirmation before deletion.
+
+**Usage:**
+```bash
+python delete_numbered_covers.py -p /path/to/music/library
+```
+
+**Example:**
+The following files would be deleted:
+```
+/Music/Radiohead/[1997] OK Computer/
+    ├── cover.jpg
+    ├── cover.1.jpg  ← deleted
+    ├── cover.2.jpg  ← deleted
+    └── cover.3.png  ← deleted
+```
+
+**Note:** Only files matching `cover.N.jpg` or `cover.N.png` where N >= 1 will be deleted. Files like `cover.jpg` or `cover.0.jpg` are not affected.
+
 ### Transcoding Scripts
 
 #### flac_to_lame.py
